@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
-const USER_ROUTER = require('./routes/user')
+const USER_ROUTER = require('./routes/user');
 
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());

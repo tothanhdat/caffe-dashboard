@@ -23,7 +23,7 @@ route.post('/login', async (req, res) => {
     if (infoUser.error && infoUser.message == 'username_not_exist')
         return res.render('pages/login', { alertErrorLogin: true })
     res.cookie('token', infoUser.data.token, { maxAge: 900000 });
-    return res.redirect('/user/danh-sach');
+    return res.json('HELLO DASHBOARD');
 })
 
 module.exports = route;
