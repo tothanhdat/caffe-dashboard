@@ -2,3 +2,17 @@ listID => listProduct
 
 updateID => updateProduct
 deleteID => deleteProduct
+
+<script>
+  $(document).ready(function(){
+    <% if (alertInsertStudentError) { %>
+      alert('MSSV da ton tai');
+    <% } %>
+  })
+</script>
+
+<% if (listCategory && listCategory.length > 0) { %>
+                            <% listCategory.forEach(category => { %> 
+                              <option><%= category.nameCategory %></option>
+                            <% }) %>
+                          <% } %>

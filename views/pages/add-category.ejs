@@ -1,0 +1,42 @@
+<% include ../partials/header%>
+<%- include ../partials/sidebar%>
+<div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <form action='/danh-muc/add' method='POST'>
+                <h4 class="form-header text-uppercase">
+                  <i class="fa fa-user-circle-o"></i>
+                   THÊM DANH MỤC
+                </h4>
+                <div class="form-group row">
+                  <label for="input-2" class="col-sm-2 col-form-label">Tên Danh Mục</label>
+                  <div class="col-sm-10">
+                    <input type="text" name='nameCategory' id="txtThemKhoa" class="form-control" required>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="input-2" class="col-sm-2 col-form-label">Mã Danh Mục</label>
+                  <div class="col-sm-10">
+                    <input type="text" name='idCategory' id="txtMaKhoa" class="form-control" required>
+                  </div>
+                </div>
+                <div class="form-footer">
+                    <button  class="btn btn-success" id="btnLuu" type='submit'>
+                      <i class="fa fa-check-square-o" ></i> 
+                      Lưu vào CSDL
+                    </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div><!--End Row-->
+<%- include ../partials/footer%>
+<script>
+  $(document).ready(function(){
+    <% if (alertError) { %>
+      alert('khoa da ton tai')
+    <% } %>
+  })
+</script>

@@ -3,7 +3,7 @@ module.exports = class Product extends PRODUCT_MODEL {
     static insert({ nameProduct, idProduct, idCategory, avatar }) {
         return new Promise(async resolve => {
             try {
-                let checkExist = await Product.findOne({ mssv });
+                let checkExist = await Product.findOne({ idProduct });
                 if (checkExist) return resolve ({ error: true, message: 'product_existed'});
                 let newPorduct = new Product({ nameProduct, idProduct, idCategory, avatar });
                 let savePorduct = await newPorduct.save();

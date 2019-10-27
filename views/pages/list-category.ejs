@@ -1,0 +1,92 @@
+<% include ../partials/header%>
+<%- include ../partials/sidebar%>
+<h3 style="font-family: utm-avo">DANH SÁCH DANH MỤC</h3>
+<form class="search-bar">
+        <input type="text" class="form-control" id="search" placeholder="Tìm Kiếm Danh Mục">
+         <a href="/danh-muc/danh-sach"></a>
+  </form>
+<table class="table table-hover" id ="table_container">
+  <thead>
+    <tr>
+        <th>Tên Danh Mục</th>
+        <th>Mã Danh Mục</th>
+      </tr>
+  </thead>
+  <div id="cannot_found" style="text-align: center; display: none">
+            <strong>KHÔNG TÌM THẤY</strong>
+  </div>
+  <tbody id= "list_data">
+  <% if (result && result.length > 0) { %>
+   <% result.forEach(element => { %>
+      <tr>
+          <td><%= element.nameCategory%></td>
+          <td><%= element.idCategory%></td>
+          <td>
+          <a href="/danh-muc/xoa/<%= element._id%>" onclick = "return confirm(`Are you sure delete`">
+          <button class="btn btn-danger" id="btnRemove">
+          <i class="fa fa-times"></i>
+            Xóa
+          </button>
+          </a>
+          <a href="/danh-muc/cap-nhat/<%= element._id%>">
+            <button class="btn btn-success" id="btnUpdate">
+            <i class="fa fa-check-square-o"></i>
+              Sửa
+            </button>
+          </a>
+          </td>
+      </tr>
+    <% }) %>
+  <% } %>
+  </tbody>
+</table>
+<% include ../partials/footer %>
+<script>
+ $(document).ready(function() {
+   $('#search').keyup(function(){
+      let search = $('#search').val();
+      const url = '/danh-muc/tim-kiem?search=';
+      $.ajax({
+        url: `${url}${search}`,
+        method: 'GET',
+        success: function(data){
+          if(data.data.length < 1)
+          {
+              $('#table_container').hide();
+              $('#cannot_found').show();
+          }
+          else{
+            $('#cannot_found').hide();
+            $('#table_container').show();
+            $('#list_data').empty();
+              data.data.forEach(infoCategory => {
+                $('#list_data').append(`
+                    <tr>
+                        <td>${infoCategory.nameCategory}</td>
+                        <td>${infoCategory.idCategory}</td>
+                        <td>
+                        <a href="/sinhvien/delete/${infoCategory._id}" onclick = "return confirm('Are you sure delete')">
+                        <button class="btn btn-danger" id="btnRemove" type='submit'>
+                        <i class="fa fa-times"></i>
+                          Xóa
+                        </button>
+                        </a>
+                        <a href="/sinhvien/update/${infoCategory._id}">
+                          <button class="btn btn-success" id="btnUpdate" type='submit'>
+                          <i class="fa fa-check-square-o"></i>
+                            Sửa
+                          </button>
+                        </a>
+                        </td>
+                    </tr>
+                `);
+              });
+            }
+          },
+        error: function(error){
+          console.log({error})
+        }
+      })
+    });
+});
+</script>
