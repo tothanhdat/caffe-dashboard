@@ -42,7 +42,7 @@ module.exports = class Product extends PRODUCT_MODEL {
                 console.log({ id, nameProduct, idProduct, idCategory, avatar });
                 // let checkID = await SinhVien.findById({ _id: id });
                 // if (!checkID) return resolve({ error: true, message: 'cannot_search_id_sinh_vien' });
-                let updateProduct = await SinhVien.findByIdAndUpdate(id, { nameProduct: nameProduct, idProduct, idCategory, avatar}, { new: true });
+                let updateProduct = await Product.findByIdAndUpdate(id, { nameProduct: nameProduct, idProduct, idCategory, avatar}, { new: true });
                 resolve({ error: false, data: updateProduct });
             } catch (error) {
                 return resolve({ error: true, message: error.message });

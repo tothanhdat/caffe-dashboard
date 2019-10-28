@@ -40,9 +40,11 @@
                   <label for="input-6" class="col-sm-2 col-form-label">Chọn Danh Mục</label>
                   <div class="col-sm-10">
                       <select class="form-control" name='idCategory' id="idCategory" required>
-                          
-                              <option> Caffe </option>
-                            
+                              <% if (listCategory && listCategory.length > 0) { %>
+                                <% listCategory.forEach(category => { %> 
+                                  <option><%= category.nameCategory %></option>
+                            <% }) %>
+                          <% } %>
                       </select>
                   </div>
                 </div>
