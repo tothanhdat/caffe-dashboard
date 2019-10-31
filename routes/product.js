@@ -25,7 +25,7 @@ route.post('/add', ROLE_ADMIN, uploadMulter.single('avatar'), async (req, res) =
 route.get('/danh-sach', ROLE_ADMIN, async (req, res) => {
     let result = await PRODUCT_MODEL.getList();
     // console.log( { result });
-    res.render('pages/list-product', { result: result.data });
+    res.render('pages/list-product2', { result: result.data });
 });
 route.get('/tim-kiem', async (req, res) => {
     try {
