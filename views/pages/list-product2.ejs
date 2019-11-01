@@ -8,9 +8,8 @@
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
-
-<h3 style="font-family: utm-avo">DANH SÁCH THỨC UỐNG</h3>
   <form class="search-bar">
+  <h3 style="font-family: utm-avo">DANH SÁCH THỨC UỐNG</h3>
         <input type="text" class="form-control" id="search" placeholder="Tìm Kiếm theo Tên hoặc Ma so">
          <a href="san-pham/danh-sach"></a>
   </form>
@@ -33,19 +32,21 @@
             <div class="row">
                 <% if (result && result.length) { %>
                         <% result.forEach(element => { %>
-                    <div class="col-12 col-md-6 col-lg-4">
+                    <div class="col-12 col-md-6 col-lg-3">
                         <div class="card" id="table_container">
-                            <img class="card-img-top" src="/image/<%=element.avatar %>" alt="Card image cap">
+                            <img class="card-img-top" src="/image/<%=element.avatar %>" alt="Card image cap" height="200px">
                             <div class="card-body">
                             <h4 class="card-title"><a href="product.html" title="View Product"><%= element.nameProduct%></a></h4>
-                            <h3 class="card-title"><a href="product.html" title="View Product"><%= element.idProduct%></a></h3>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <h3 class="card-title"><a href="product.html" title="View Product">Giá: <%= element.price%> VNĐ</a></h3>
+                            <p class="card-text"><%= element.nameProduct%> là thức uống tuyệt vời giúp bạn giải tỏa căng thẳng sau mỗi lần làm việc mệt mỏi. Hãy thử ngay...</p>
                             <div class="row">
                                 <div class="col">
-                                    <p class="btn btn-danger btn-block">99.00 $</p>
+                                <a href="/san-pham/xoa/<%= element._id%>" onclick = "return confirm('Are you sure delete')">
+                                    <p class="btn btn-danger btn-block">Delete</p>
+                                </a>
                                 </div>
                                 <div class="col">
-                                    <a href="#" class="btn btn-success btn-block">Add to cart</a>
+                                    <a href="/san-pham/cap-nhat/<%= element._id%>" class="btn btn-success btn-block">Sửa (update)</a>
                                 </div>
                             </div>
                         </div>
@@ -102,6 +103,7 @@
         url: `${url}${search}`,
         method: 'GET',
         success: function(data){
+            $('#list_data').empty();
           if(data.data.length < 1)
           {
               $('#table_container').hide();
@@ -110,22 +112,22 @@
           else{
             $('#cannot_found').hide();
             $('#table_container').show();
-            $('#list_data').empty();
               data.data.forEach(infoProduct => {
                 $('#list_data').append(`
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-12 col-md-6 col-lg-3">
                         <div class="card" id="table_container">
-                            <img class="card-img-top" src="/image/${infoProduct.avatar}" alt="your_image">
+                            <img class="card-img-top" src="/image/${infoProduct.avatar}" alt="your_image" height="200px">
                             <div class="card-body">
                             <h4 class="card-title"><a href="product.html" title="View Product">${infoProduct.nameProduct}</a></h4>
-                            <h3 class="card-title"><a href="product.html" title="View Product">${infoProduct.idProduct}</a></h3>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <h3 class="card-title"><a href="product.html" title="View Product">${infoProduct.price}</a></h3>
+                            <p class="card-text">${infoProduct.nameProduct} là thức uống tuyệt vời giúp bạn giải tỏa căng thẳng sau mỗi lần làm việc mệt mỏi. Hãy thử ngay...</p>
                             <div class="row">
                                 <div class="col">
-                                    <p class="btn btn-danger btn-block">99.00 $</p>
+                                <a href="/san-pham/xoa/${infoProduct._id}" onclick = "return confirm('Are you sure delete')">
+                                    <p class="btn btn-danger btn-block">Xóa $</p>
                                 </div>
                                 <div class="col">
-                                    <a href="#" class="btn btn-success btn-block">Add to cart</a>
+                                    <a href="/san-pham/cap-nhat/${infoProduct._id}" class="btn btn-success btn-block">Sửa</a>
                                 </div>
                             </div>
                         </div>
