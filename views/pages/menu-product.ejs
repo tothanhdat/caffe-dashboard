@@ -2,6 +2,9 @@
 <%- include ../partials/sidebar%>
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
@@ -9,7 +12,7 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
   <form class="search-bar">
-  <h3 style="font-family: utm-avo">DANH SÁCH THỨC UỐNG</h3>
+  <h3 style="font-family: utm-avo">MENU</h3>
         <input type="text" class="form-control" id="search" placeholder="Tìm Kiếm theo Tên hoặc Ma so">
          <a href="san-pham/danh-sach"></a>
   </form>
@@ -38,15 +41,12 @@
                             <div class="card-body">
                             <h4 class="card-title"><a href="product.html" title="View Product"><%= element.nameProduct%></a></h4>
                             <h3 class="card-title"><a href="product.html" title="View Product">Giá: <%= element.price%> VNĐ</a></h3>
-                            <p class="card-text"><%= element.nameProduct%> là thức uống tuyệt vời giúp bạn giải tỏa căng thẳng sau mỗi lần làm việc mệt mỏi. Hãy thử ngay...</p>
+                            <p class="card-text"><%= element.nameProduct%> là thức uống tuyệt vời giúp bạn giải tỏa căng thẳng sau làm việc mệt mỏi. Thử ngay...</p>
                             <div class="row">
                                 <div class="col">
-                                <a href="/san-pham/xoa/<%= element._id%>" onclick = "return confirm('Bạn có chắn chắn xóa không?')">
-                                    <p class="btn btn-danger btn-block">Delete</p>
-                                </a>
-                                </div>
-                                <div class="col">
-                                    <a href="/san-pham/cap-nhat/<%= element._id%>" class="btn btn-success btn-block">Sửa (update)</a>
+                                    <a href="#" id="btnAddtoCart" class="btn btn-success btn-block">Add to card 
+                                        <span class="glyphicon glyphicon-shopping-cart"></span>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -55,26 +55,10 @@
                     <% }) %>
                 <% } %>
                 </div>
-                <nav aria-label="...">
-                        <ul class="pagination" style="display: inline-flex; margin: 0 auto;">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1">Previous</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item active">
-                                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
-                            </li>
-                        </ul>
-                </nav>
             </div>
         </div>
     </div>
 </div>
-
 
 <!-- Footer -->
 <footer class="text-light">
@@ -92,10 +76,11 @@
         </div>
     </div>
 </footer>
+	
 <% include ../partials/footer %>
 <script>
-
  $(document).ready(function() {
+    $("#btnAddtoCart").click(function(e) { e.preventDefault() });
    $('#search').keyup(function(){
       let search = $('#search').val();
       const url = '/san-pham/tim-kiem?search=';

@@ -5,6 +5,6 @@ module.exports = async function (req, res, next) {
         return res.redirect('/user/dang-nhap');
     let checkRole = await verify(token);
     if (checkRole.data.role != 1)
-        return res.redirect('/user/dang-nhap');
+        return res.redirect('/san-pham/menu');
     next();
 }

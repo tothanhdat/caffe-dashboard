@@ -16,3 +16,6 @@ deleteID => deleteProduct
                               <option><%= category.nameCategory %></option>
                             <% }) %>
                           <% } %>
+
+
+Không cho thêm trùng nameProduct, nameCategory

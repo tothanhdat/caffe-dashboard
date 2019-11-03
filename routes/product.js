@@ -5,6 +5,12 @@ const ROLE_ADMIN = require('../utils/checkRole');
 const { uploadMulter } = require('../utils/config_multer');
 const fs = require('fs');
 
+route.get('/menu', async (req, res) => {
+    let result = await PRODUCT_MODEL.getList();
+    // console.log( { result });
+    res.render('pages/menu-product', { result: result.data });
+});
+
 route.get('/them', ROLE_ADMIN, async (req, res) => {
     let listCategory = await CATEGORY_MODEL.getList();
     res.render('pages/add-product', { listCategory: listCategory.data, alertInsertProductError: false });
@@ -24,7 +30,6 @@ route.post('/add', ROLE_ADMIN, uploadMulter.single('avatar'), async (req, res) =
 });
 route.get('/danh-sach', ROLE_ADMIN, async (req, res) => {
     let result = await PRODUCT_MODEL.getList();
-    // console.log( { result });
     res.render('pages/list-product2', { result: result.data });
 });
 route.get('/tim-kiem', async (req, res) => {
@@ -33,8 +38,6 @@ route.get('/tim-kiem', async (req, res) => {
         const dataSearch = await PRODUCT_MODEL.find({
             $or: [
                 { nameProduct: new RegExp(search, 'i') },
-                { idProduct: new RegExp(search, 'i') },
-                { idCategory: new RegExp(search, 'i') },
                 { price: new RegExp(search, 'i') },
             ]
         });

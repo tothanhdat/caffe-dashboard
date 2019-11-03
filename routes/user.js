@@ -29,4 +29,5 @@ route.post('/login', async (req, res) => {
     return res.redirect('/san-pham/danh-sach');
 })
 
+
 module.exports = route;

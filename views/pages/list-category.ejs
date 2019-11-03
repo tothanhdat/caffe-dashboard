@@ -22,7 +22,7 @@
           <td><%= element.nameCategory%></td>
           <td><%= element.idCategory%></td>
           <td>
-          <a href="/danh-muc/xoa/<%= element._id%>" onclick = "return confirm(`Are you sure delete`">
+          <a href="/danh-muc/xoa/<%= element._id%>" onclick = "return confirm(`Bạn có chắn chắn xóa không?`">
           <button class="btn btn-danger" id="btnRemove">
           <i class="fa fa-times"></i>
             Xóa
@@ -65,7 +65,7 @@
                         <td>${infoCategory.nameCategory}</td>
                         <td>${infoCategory.idCategory}</td>
                         <td>
-                        <a href="/sinhvien/delete/${infoCategory._id}" onclick = "return confirm('Are you sure delete')">
+                        <a href="/sinhvien/delete/${infoCategory._id}" onclick = "return confirm('Bạn có chắc chắn xóa không?')">
                         <button class="btn btn-danger" id="btnRemove" type='submit'>
                         <i class="fa fa-times"></i>
                           Xóa

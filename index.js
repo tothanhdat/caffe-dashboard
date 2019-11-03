@@ -10,7 +10,7 @@ const CATEGORY_ROUTER = require('./routes/category');
 
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
-app.use(express.static('public'));
+app.use(express.static('./public'));
 app.set('view engine', 'ejs');
 app.set('views', './views');
 app.use(cookieParser());

@@ -29,7 +29,7 @@
           <td><%= element.idProduct%></td>
           <td><%= element.idCategory%></td>
           <td>
-          <a href="/san-pham/xoa/<%= element._id%>" onclick = "return confirm('Are you sure delete')">
+          <a href="/san-pham/xoa/<%= element._id%>" onclick = "return confirm('Bạn có chắn chắn xóa không?')">
           <button class="btn btn-danger" id="btnRemove" type='submit'>
           <i class="fa fa-times"></i> 
             Xóa
@@ -77,7 +77,7 @@
                         <td>${infoProduct.idProduct}</td>
                         <td>${infoProduct.idCategory}</td>
                         <td>
-                        <a href="/sinhvien/delete/${infoProduct._id}" onclick = "return confirm('Are you sure delete')">
+                        <a href="/sinhvien/delete/${infoProduct._id}" onclick = "return confirm('Bạn có chắn chắn xóa không?')">
                         <button class="btn btn-danger" id="btnRemove" type='submit'>
                         <i class="fa fa-times"></i>
                           Xóa

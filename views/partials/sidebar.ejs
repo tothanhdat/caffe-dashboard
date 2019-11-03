@@ -24,7 +24,7 @@
       <ul class="user-setting-menu">
             <li><a href="javaScript:void();"><i class="icon-user"></i>  My Profile</a></li>
             <li><a href="javaScript:void();"><i class="icon-settings"></i> Setting</a></li>
-      <li><a href="javaScript:void();"><i class="icon-power"></i> Logout</a></li>
+      <li><a href="http://localhost:5000"><i class="icon-power"></i> Logout</a></li>
       </ul>
      </div>
       </div>
@@ -49,6 +49,7 @@
           <li><a href="/san-pham/danh-sach"><i class="zmdi zmdi-long-arrow-right"></i> Danh Sách Sản Phẩm</a></li>
           <li><a href="/danh-muc/them"><i class="zmdi zmdi-long-arrow-right"></i> Thêm Danh Mục</a></li>
           <li><a href="/danh-muc/danh-sach"><i class="zmdi zmdi-long-arrow-right"></i> Danh Sách Danh Mục</a></li>
+          <li><a href="/san-pham/menu"><i class="zmdi zmdi-long-arrow-right"></i> Menu</a></li>
         </ul>
       </li>
       <li>
@@ -281,6 +282,7 @@
         </ul>
         </div>
     </li>
+    
     <li class="nav-item dropdown-lg">
       <a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect" data-toggle="dropdown" href="javascript:void();">
     <i class="fa fa-bell-o"></i><span class="badge badge-info badge-up">14</span></a>
@@ -336,6 +338,11 @@
           <li class="dropdown-item"> <i class="flag-icon flag-icon-de mr-2"></i> German</li>
         </ul>
     </li>
+    <% if (result && result.length > 0) { %>
+   <% result.forEach(element => { %>
+    <p><%=element.username%></p>
+    <% }) %>
+  <% } %>
     <li class="nav-item">
       <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown" href="#">
         <span class="user-profile"><img src="../../assets/images/avatars/avatar-13.png" class="img-circle" alt="user avatar"></span>
