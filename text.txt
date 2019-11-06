@@ -18,4 +18,4 @@ deleteID => deleteProduct
                           <% } %>
 
 
-Không cho thêm trùng nameProduct, nameCategory
+Không cho thêm trùng nameProduct, nameCategory,
