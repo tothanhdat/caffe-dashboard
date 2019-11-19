@@ -1,15 +1,19 @@
 const route = require('express').Router();
 const ROLE_ADMIN = require('../utils/checkRole');
 const CATEGORY_MODEL = require('../models/Category');
+const { renderToView } = require('../utils/childRouting');
 
 route.get('/them', ROLE_ADMIN, async (req, res) => {
-    res.render('pages/add-category', { alertError: false });
+    //res.render('pages/add-category', { alertError: false });
+    renderToView(req, res, 'pages/add-category', { alertError: false })
 });
 route.post('/add', ROLE_ADMIN, async (req, res) => {
     let { nameCategory, idCategory } = req.body;
     try {
         let result = await CATEGORY_MODEL.insert(nameCategory, idCategory);
-        if (result.error && result.message == 'category_existed') return res.render('pages/add-category', { alertError: true });
+        if (result.error && result.message == 'category_existed') 
+            //return res.render('pages/add-category', { alertError: true });
+            renderToView(req, res, 'pages/add-category', { alertError: false })
         res.redirect('/danh-muc/danh-sach');
     } catch (error) {
         res.json(error.message);
@@ -17,7 +21,9 @@ route.post('/add', ROLE_ADMIN, async (req, res) => {
 });
 route.get('/danh-sach', ROLE_ADMIN, async (req, res) => {
     let result = await CATEGORY_MODEL.getList();
-    res.render('pages/list-category', { result: result.data });
+    //res.render('pages/list-category', { result: result.data });
+    renderToView(req, res, 'pages/list-category', { result: result.data })
+
 });
 route.get('/tim-kiem', async (req, res) => {
     try {
@@ -42,7 +48,9 @@ route.get('/:id?', ROLE_ADMIN, async (req, res) => {
 route.get('/cap-nhat/:id', ROLE_ADMIN, async (req, res) => {
     let { id } = req.params;
     let infoCategory = await CATEGORY_MODEL.getID(id);
-    res.render('pages/edit-category', { infoCategory: infoCategory.data });
+    //res.render('pages/edit-category', { infoCategory: infoCategory.data });
+    renderToView(req, res, 'pages/edit-category', { infoCategory: infoCategory.data })
+
 });
 route.post('/update/:id', ROLE_ADMIN, async (req, res) => {
     let { id } = req.params;

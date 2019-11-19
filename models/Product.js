@@ -25,6 +25,7 @@ module.exports = class Product extends PRODUCT_MODEL {
             }
         });
     }
+
     static getID(id) {
         return new Promise(async resolve => {
             try {
@@ -36,6 +37,7 @@ module.exports = class Product extends PRODUCT_MODEL {
             }
         });
     }
+
     static updateProduct({ id, nameProduct, idProduct, idCategory, avatar, price }) {
         return new Promise(async resolve => {
             try {
@@ -48,6 +50,7 @@ module.exports = class Product extends PRODUCT_MODEL {
             }
         });
     }
+    
     static deleteProduct(id) {
         return new Promise(async resolve => {
             try {

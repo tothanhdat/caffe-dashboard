@@ -8,7 +8,7 @@ const userSchema = new Schema({
      * 1. Admin
      * 0. User
      */
-    role: { type: Number, default: 1 },
+    role: { type: Number, default: 0 },
 });
 
 const userModel = mongoose.model('user', userSchema);
